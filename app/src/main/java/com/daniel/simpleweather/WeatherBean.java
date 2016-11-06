@@ -10,9 +10,22 @@ import org.greenrobot.greendao.annotation.Generated;
 
 @Entity
 public class WeatherBean {
+	@Generated(hash = 585023127)
+	public WeatherBean(String description) {
+		this.description = description;
+	}
 
-	@Generated(hash = 2015408157)
 	public WeatherBean() {
+	}
+
+	public String description;
+
+	public String getDescription() {
+		return this.description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 

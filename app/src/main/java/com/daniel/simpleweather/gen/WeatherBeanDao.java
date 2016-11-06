@@ -24,6 +24,7 @@ public class WeatherBeanDao extends AbstractDao<WeatherBean, Void> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
+        public final static Property Description = new Property(0, String.class, "description", false, "DESCRIPTION");
     };
 
 
@@ -39,6 +40,7 @@ public class WeatherBeanDao extends AbstractDao<WeatherBean, Void> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"WEATHER_BEAN\" (" + //
+                "\"DESCRIPTION\" TEXT);"); // 0: description
     }
 
     /** Drops the underlying database table. */
@@ -50,11 +52,21 @@ public class WeatherBeanDao extends AbstractDao<WeatherBean, Void> {
     @Override
     protected final void bindValues(DatabaseStatement stmt, WeatherBean entity) {
         stmt.clearBindings();
+ 
+        String description = entity.getDescription();
+        if (description != null) {
+            stmt.bindString(1, description);
+        }
     }
 
     @Override
     protected final void bindValues(SQLiteStatement stmt, WeatherBean entity) {
         stmt.clearBindings();
+ 
+        String description = entity.getDescription();
+        if (description != null) {
+            stmt.bindString(1, description);
+        }
     }
 
     @Override
@@ -65,12 +77,14 @@ public class WeatherBeanDao extends AbstractDao<WeatherBean, Void> {
     @Override
     public WeatherBean readEntity(Cursor cursor, int offset) {
         WeatherBean entity = new WeatherBean( //
+            cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0) // description
         );
         return entity;
     }
      
     @Override
     public void readEntity(Cursor cursor, WeatherBean entity, int offset) {
+        entity.setDescription(cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0));
      }
     
     @Override
