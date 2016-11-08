@@ -152,5 +152,31 @@ public class WeatherResponse {
         public void setRain(String rain) {
             this.rain = rain;
         }
+
+        @Override
+        public String toString() {
+            return "WeatherinfoBean{" +
+                    "city='" + city + '\'' +
+                    ", cityid='" + cityid + '\'' +
+                    ", temp='" + temp + '\'' +
+                    ", WD='" + WD + '\'' +
+                    ", WS='" + WS + '\'' +
+                    ", SD='" + SD + '\'' +
+                    ", WSE='" + WSE + '\'' +
+                    ", time='" + time + '\'' +
+                    ", isRadar='" + isRadar + '\'' +
+                    ", Radar='" + Radar + '\'' +
+                    ", njd='" + njd + '\'' +
+                    ", qy='" + qy + '\'' +
+                    ", rain='" + rain + '\'' +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "WeatherResponse{" +
+                "weatherinfo=" + weatherinfo +
+                '}';
     }
 }

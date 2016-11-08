@@ -14,7 +14,7 @@ import retrofit2.http.Query;
 
 public interface WeatherService {
 
-    @GET("data/sk/{id}.html")
+    @GET("/data/sk/{id}.html")
     Call<WeatherResponse> getWeatherResponse(@Path("id") String id);  //test id = 101010100
 
 
