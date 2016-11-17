@@ -1,17 +1,11 @@
 package com.daniel.simpleweather.util;
 
-import android.content.Context;
-import android.util.Log;
-
-import com.orhanobut.logger.BuildConfig;
-import com.orhanobut.logger.LogLevel;
+import com.daniel.simpleweather.BuildConfig;
 import com.orhanobut.logger.Logger;
-
 
 /**
  * Created by Daniel Feng W on 2016/11/16.
  */
-
 public class L {
     private static boolean debug = BuildConfig.DEBUG;
     public static boolean allowV = true;

@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.daniel.simpleweather.bean.WeatherResponse;
 import com.daniel.simpleweather.databinding.ActivityMainBinding;
+import com.daniel.simpleweather.service.MyRetrofit;
 import com.daniel.simpleweather.service.WeatherService;
 
 import retrofit2.Call;
@@ -31,18 +32,9 @@ public class MainActivity extends AppCompatActivity {
         w.description = "I am weather description.";
         binding.setVariable(com.daniel.simpleweather.BR.weather, w);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://www.weather.com.cn")
-                //增加返回值为String的支持
-                .addConverterFactory(ScalarsConverterFactory.create())
-                //增加返回值为Gson的支持(以实体类返回)
-                .addConverterFactory(GsonConverterFactory.create())
-                //增加返回值为Oservable<T>的支持
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build();
+        WeatherService weatherService = MyRetrofit.getInstance().getWeatherService();
+        Call<WeatherResponse> weatherResponseCall = weatherService.getWeatherResponse("北京");
 
-        WeatherService weatherService = retrofit.create(WeatherService.class);
-        Call<WeatherResponse> weatherResponseCall = weatherService.getWeatherResponse("101010100");
         weatherResponseCall.enqueue(new Callback<WeatherResponse>() {
             @Override
             public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {

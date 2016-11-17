@@ -1,11 +1,10 @@
 package com.daniel.simpleweather.app;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.daniel.simpleweather.util.AppUtil;
 import com.daniel.simpleweather.util.L;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by Daniel Feng W on 2016/11/16.
@@ -13,10 +12,17 @@ import static android.content.ContentValues.TAG;
 
 public class App extends Application {
 
+    private static Context mContext;
+
     @Override
     public void onCreate() {
         super.onCreate();
-        String sha1 = AppUtil.getCertificateSHA1Fingerprint(this);
+        mContext = getApplicationContext();
+        String sha1 = AppUtil.getSHA1(this);
         L.d("SHA1 = " + sha1);
+    }
+
+    public static Context getContext() {
+        return mContext;
     }
 }

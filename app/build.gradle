@@ -11,6 +11,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "WEATHER_BASE_URL", '"http://api.map.baidu.com/telematics/v3/"'
+        buildConfigField "int", "COMMON_PAGE_SIZE", "10"
     }
     buildTypes {
         release {

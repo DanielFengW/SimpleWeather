@@ -1,6 +1,7 @@
 package com.daniel.simpleweather.service;
 
 import com.daniel.simpleweather.WeatherBean;
+import com.daniel.simpleweather.app.KeyStore;
 import com.daniel.simpleweather.bean.WeatherResponse;
 
 import retrofit2.Call;
@@ -14,9 +15,9 @@ import retrofit2.http.Query;
 
 public interface WeatherService {
 
-    @GET("/data/sk/{id}.html")
-    Call<WeatherResponse> getWeatherResponse(@Path("id") String id);  //test id = 101010100
+//    http://api.map.baidu.com/telematics/v3/weather?location=广州&output=JSON&ak=FK9mkfdQsloEngodbFl4FeY3
 
-
+    @GET("weather")
+    Call<WeatherResponse> getWeatherResponse(@Query("location") String location);
 
 }

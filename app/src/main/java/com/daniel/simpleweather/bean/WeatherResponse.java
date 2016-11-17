@@ -1,6 +1,6 @@
 package com.daniel.simpleweather.bean;
 
-import org.greenrobot.greendao.annotation.Entity;
+import java.util.List;
 
 /**
  * Created by Daniel Feng W on 2016/11/6.
@@ -8,175 +8,215 @@ import org.greenrobot.greendao.annotation.Entity;
 
 public class WeatherResponse {
 
+
     /**
-     * city : 北京
-     * cityid : 101010100
-     * temp : 18
-     * WD : 东南风
-     * WS : 1级
-     * SD : 17%
-     * WSE : 1
-     * time : 17:05
-     * isRadar : 1
-     * Radar : JC_RADAR_AZ9010_JB
-     * njd : 暂无实况
-     * qy : 1011
-     * rain : 0
+     * error : 0
+     * status : success
+     * date : 2016-11-17
+     * results : [{"currentCity":"广州","pm25":"122","index":[{"title":"穿衣","zs":"热","tipt":"穿衣指数","des":"天气热，建议着短裙、短裤、短薄外套、T恤等夏季服装。"},{"title":"洗车","zs":"不宜","tipt":"洗车指数","des":"不宜洗车，未来24小时内有雨，如果在此期间洗车，雨水和路上的泥水可能会再次弄脏您的爱车。"},{"title":"旅游","zs":"适宜","tipt":"旅游指数","des":"有降水，温度适宜，在细雨中游玩别有一番情调，可不要错过机会呦！但记得出门要携带雨具。"},{"title":"感冒","zs":"较易发","tipt":"感冒指数","des":"天气转凉，空气湿度较大，较易发生感冒，体质较弱的朋友请注意适当防护。"},{"title":"运动","zs":"较不宜","tipt":"运动指数","des":"有降水，推荐您在室内进行低强度运动；若坚持户外运动，须注意选择避雨防滑并携带雨具。"},{"title":"紫外线强度","zs":"弱","tipt":"紫外线强度指数","des":"紫外线强度较弱，建议出门前涂擦SPF在12-15之间、PA+的防晒护肤品。"}],"weather_data":[{"date":"周四 11月17日 (实时：21℃)","dayPictureUrl":"http://api.map.baidu.com/images/weather/day/duoyun.png","nightPictureUrl":"http://api.map.baidu.com/images/weather/night/duoyun.png","weather":"多云","wind":"微风","temperature":"30 ~ 21℃"},{"date":"周五","dayPictureUrl":"http://api.map.baidu.com/images/weather/day/zhenyu.png","nightPictureUrl":"http://api.map.baidu.com/images/weather/night/zhongyu.png","weather":"阵雨转中雨","wind":"微风","temperature":"28 ~ 22℃"},{"date":"周六","dayPictureUrl":"http://api.map.baidu.com/images/weather/day/zhongyu.png","nightPictureUrl":"http://api.map.baidu.com/images/weather/night/zhongyu.png","weather":"中雨","wind":"微风","temperature":"26 ~ 21℃"},{"date":"周日","dayPictureUrl":"http://api.map.baidu.com/images/weather/day/zhongyu.png","nightPictureUrl":"http://api.map.baidu.com/images/weather/night/zhenyu.png","weather":"中雨转阵雨","wind":"微风","temperature":"27 ~ 21℃"}]}]
      */
+    private int error;
+    private String status;
+    private String date;
 
-    private WeatherinfoBean weatherinfo;
+    /**
+     * currentCity : 广州
+     * pm25 : 122
+     * index : [{"title":"穿衣","zs":"热","tipt":"穿衣指数","des":"天气热，建议着短裙、短裤、短薄外套、T恤等夏季服装。"},{"title":"洗车","zs":"不宜","tipt":"洗车指数","des":"不宜洗车，未来24小时内有雨，如果在此期间洗车，雨水和路上的泥水可能会再次弄脏您的爱车。"},{"title":"旅游","zs":"适宜","tipt":"旅游指数","des":"有降水，温度适宜，在细雨中游玩别有一番情调，可不要错过机会呦！但记得出门要携带雨具。"},{"title":"感冒","zs":"较易发","tipt":"感冒指数","des":"天气转凉，空气湿度较大，较易发生感冒，体质较弱的朋友请注意适当防护。"},{"title":"运动","zs":"较不宜","tipt":"运动指数","des":"有降水，推荐您在室内进行低强度运动；若坚持户外运动，须注意选择避雨防滑并携带雨具。"},{"title":"紫外线强度","zs":"弱","tipt":"紫外线强度指数","des":"紫外线强度较弱，建议出门前涂擦SPF在12-15之间、PA+的防晒护肤品。"}]
+     * weather_data : [{"date":"周四 11月17日 (实时：21℃)","dayPictureUrl":"http://api.map.baidu.com/images/weather/day/duoyun.png","nightPictureUrl":"http://api.map.baidu.com/images/weather/night/duoyun.png","weather":"多云","wind":"微风","temperature":"30 ~ 21℃"},{"date":"周五","dayPictureUrl":"http://api.map.baidu.com/images/weather/day/zhenyu.png","nightPictureUrl":"http://api.map.baidu.com/images/weather/night/zhongyu.png","weather":"阵雨转中雨","wind":"微风","temperature":"28 ~ 22℃"},{"date":"周六","dayPictureUrl":"http://api.map.baidu.com/images/weather/day/zhongyu.png","nightPictureUrl":"http://api.map.baidu.com/images/weather/night/zhongyu.png","weather":"中雨","wind":"微风","temperature":"26 ~ 21℃"},{"date":"周日","dayPictureUrl":"http://api.map.baidu.com/images/weather/day/zhongyu.png","nightPictureUrl":"http://api.map.baidu.com/images/weather/night/zhenyu.png","weather":"中雨转阵雨","wind":"微风","temperature":"27 ~ 21℃"}]
+     */
+    private List<ResultsBean> results;
 
-    public WeatherinfoBean getWeatherinfo() {
-        return weatherinfo;
+    public int getError() {
+        return error;
     }
 
-    public void setWeatherinfo(WeatherinfoBean weatherinfo) {
-        this.weatherinfo = weatherinfo;
+    public void setError(int error) {
+        this.error = error;
     }
 
-    public static class WeatherinfoBean {
-        private String city;
-        private String cityid;
-        private String temp;
-        private String WD;
-        private String WS;
-        private String SD;
-        private String WSE;
-        private String time;
-        private String isRadar;
-        private String Radar;
-        private String njd;
-        private String qy;
-        private String rain;
+    public String getStatus() {
+        return status;
+    }
 
-        public String getCity() {
-            return city;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public List<ResultsBean> getResults() {
+        return results;
+    }
+
+    public void setResults(List<ResultsBean> results) {
+        this.results = results;
+    }
+
+    public static class ResultsBean {
+        private String currentCity;
+        private String pm25;
+        /**
+         * title : 穿衣
+         * zs : 热
+         * tipt : 穿衣指数
+         * des : 天气热，建议着短裙、短裤、短薄外套、T恤等夏季服装。
+         */
+
+        private List<IndexBean> index;
+        /**
+         * date : 周四 11月17日 (实时：21℃)
+         * dayPictureUrl : http://api.map.baidu.com/images/weather/day/duoyun.png
+         * nightPictureUrl : http://api.map.baidu.com/images/weather/night/duoyun.png
+         * weather : 多云
+         * wind : 微风
+         * temperature : 30 ~ 21℃
+         */
+
+        private List<WeatherDataBean> weather_data;
+
+        public String getCurrentCity() {
+            return currentCity;
         }
 
-        public void setCity(String city) {
-            this.city = city;
+        public void setCurrentCity(String currentCity) {
+            this.currentCity = currentCity;
         }
 
-        public String getCityid() {
-            return cityid;
+        public String getPm25() {
+            return pm25;
         }
 
-        public void setCityid(String cityid) {
-            this.cityid = cityid;
+        public void setPm25(String pm25) {
+            this.pm25 = pm25;
         }
 
-        public String getTemp() {
-            return temp;
+        public List<IndexBean> getIndex() {
+            return index;
         }
 
-        public void setTemp(String temp) {
-            this.temp = temp;
+        public void setIndex(List<IndexBean> index) {
+            this.index = index;
         }
 
-        public String getWD() {
-            return WD;
+        public List<WeatherDataBean> getWeather_data() {
+            return weather_data;
         }
 
-        public void setWD(String WD) {
-            this.WD = WD;
+        public void setWeather_data(List<WeatherDataBean> weather_data) {
+            this.weather_data = weather_data;
         }
 
-        public String getWS() {
-            return WS;
+        public static class IndexBean {
+            private String title;
+            private String zs;
+            private String tipt;
+            private String des;
+
+            public String getTitle() {
+                return title;
+            }
+
+            public void setTitle(String title) {
+                this.title = title;
+            }
+
+            public String getZs() {
+                return zs;
+            }
+
+            public void setZs(String zs) {
+                this.zs = zs;
+            }
+
+            public String getTipt() {
+                return tipt;
+            }
+
+            public void setTipt(String tipt) {
+                this.tipt = tipt;
+            }
+
+            public String getDes() {
+                return des;
+            }
+
+            public void setDes(String des) {
+                this.des = des;
+            }
         }
 
-        public void setWS(String WS) {
-            this.WS = WS;
-        }
+        public static class WeatherDataBean {
+            private String date;
+            private String dayPictureUrl;
+            private String nightPictureUrl;
+            private String weather;
+            private String wind;
+            private String temperature;
 
-        public String getSD() {
-            return SD;
-        }
+            public String getDate() {
+                return date;
+            }
 
-        public void setSD(String SD) {
-            this.SD = SD;
-        }
+            public void setDate(String date) {
+                this.date = date;
+            }
 
-        public String getWSE() {
-            return WSE;
-        }
+            public String getDayPictureUrl() {
+                return dayPictureUrl;
+            }
 
-        public void setWSE(String WSE) {
-            this.WSE = WSE;
-        }
+            public void setDayPictureUrl(String dayPictureUrl) {
+                this.dayPictureUrl = dayPictureUrl;
+            }
 
-        public String getTime() {
-            return time;
-        }
+            public String getNightPictureUrl() {
+                return nightPictureUrl;
+            }
 
-        public void setTime(String time) {
-            this.time = time;
-        }
+            public void setNightPictureUrl(String nightPictureUrl) {
+                this.nightPictureUrl = nightPictureUrl;
+            }
 
-        public String getIsRadar() {
-            return isRadar;
-        }
+            public String getWeather() {
+                return weather;
+            }
 
-        public void setIsRadar(String isRadar) {
-            this.isRadar = isRadar;
-        }
+            public void setWeather(String weather) {
+                this.weather = weather;
+            }
 
-        public String getRadar() {
-            return Radar;
-        }
+            public String getWind() {
+                return wind;
+            }
 
-        public void setRadar(String Radar) {
-            this.Radar = Radar;
-        }
+            public void setWind(String wind) {
+                this.wind = wind;
+            }
 
-        public String getNjd() {
-            return njd;
-        }
+            public String getTemperature() {
+                return temperature;
+            }
 
-        public void setNjd(String njd) {
-            this.njd = njd;
-        }
-
-        public String getQy() {
-            return qy;
-        }
-
-        public void setQy(String qy) {
-            this.qy = qy;
-        }
-
-        public String getRain() {
-            return rain;
-        }
-
-        public void setRain(String rain) {
-            this.rain = rain;
-        }
-
-        @Override
-        public String toString() {
-            return "WeatherinfoBean{" +
-                    "city='" + city + '\'' +
-                    ", cityid='" + cityid + '\'' +
-                    ", temp='" + temp + '\'' +
-                    ", WD='" + WD + '\'' +
-                    ", WS='" + WS + '\'' +
-                    ", SD='" + SD + '\'' +
-                    ", WSE='" + WSE + '\'' +
-                    ", time='" + time + '\'' +
-                    ", isRadar='" + isRadar + '\'' +
-                    ", Radar='" + Radar + '\'' +
-                    ", njd='" + njd + '\'' +
-                    ", qy='" + qy + '\'' +
-                    ", rain='" + rain + '\'' +
-                    '}';
+            public void setTemperature(String temperature) {
+                this.temperature = temperature;
+            }
         }
     }
 
     @Override
     public String toString() {
         return "WeatherResponse{" +
-                "weatherinfo=" + weatherinfo +
+                "error=" + error +
+                ", status='" + status + '\'' +
+                ", date='" + date + '\'' +
+                ", results=" + results +
                 '}';
     }
 }
