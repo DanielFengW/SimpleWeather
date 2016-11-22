@@ -12,7 +12,6 @@ import okhttp3.Response;
 /**
  * Created by Daniel Feng W on 2016/11/17.
  */
-
 public class BaiduIntercepter implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
@@ -20,6 +19,7 @@ public class BaiduIntercepter implements Interceptor {
         HttpUrl httpUrl = request.url().newBuilder()
                 .addQueryParameter("ak", KeyStore.BAIDU_AK)
                 .addQueryParameter("output", "json")
+                .addQueryParameter("mcode", KeyStore.BAIDU_MCODE)
                 .build();
         request = request.newBuilder().url(httpUrl).build();
         return chain.proceed(request);

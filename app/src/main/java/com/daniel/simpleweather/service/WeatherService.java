@@ -12,7 +12,6 @@ import retrofit2.http.Query;
 /**
  * Created by Daniel Feng W on 2016/11/6.
  */
-
 public interface WeatherService {
 
 //    http://api.map.baidu.com/telematics/v3/weather?location=广州&output=JSON&ak=FK9mkfdQsloEngodbFl4FeY3

@@ -10,6 +10,7 @@ import com.daniel.simpleweather.bean.WeatherResponse;
 import com.daniel.simpleweather.databinding.ActivityMainBinding;
 import com.daniel.simpleweather.service.MyRetrofit;
 import com.daniel.simpleweather.service.WeatherService;
+import com.daniel.simpleweather.util.L;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {
                 WeatherResponse body = response.body();
-                Log.d(TAG, "onResponse: " + body.toString());
+                L.d(body.toString());
             }
 
             @Override
