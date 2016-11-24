@@ -1,4 +1,4 @@
-package com.daniel.simpleweather.service;
+package com.daniel.simpleweather.net;
 
 import com.daniel.simpleweather.app.KeyStore;
 

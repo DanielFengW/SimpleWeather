@@ -1,12 +1,9 @@
-package com.daniel.simpleweather.service;
+package com.daniel.simpleweather.net;
 
-import com.daniel.simpleweather.WeatherBean;
-import com.daniel.simpleweather.app.KeyStore;
 import com.daniel.simpleweather.bean.WeatherResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
